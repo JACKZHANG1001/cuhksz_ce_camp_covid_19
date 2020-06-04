@@ -3,16 +3,16 @@
 clear;
 clc;
 
-N = 5927e8; % population of Hubei
+N = 5927e4; % population of Hubei
 I = 1;
 R = 0;
 E = 0;
 S = N - I;
-r = 3; % contacts
+
 a = 1/8; % p for E
 B1 = 0.15747;
-B2 = 0.78735;
-y = 0.143 + 0.025373; % gama
+B2 = 0.78735 - 0.5;
+y1 = 0.04977; % death rate
 
 new_infected=0;
 
@@ -24,8 +24,21 @@ for t = 1:length(T) - 1
     elseif t >= 11 && t <= 80
         r = 3;
     else
-        r=10;
+        r = 10;
     end
+    
+    if t >= 1 && t <= 4
+        y2 = 0.05287;
+    elseif t >= 5 && t <= 15
+        y2 = 0.02534;
+    elseif t >= 15 && t <= 63
+        y2 = 0.46123;
+    else
+        y2 = 0.93481;
+    end
+    
+    y = y1 + y2; % gamma
+    
     S(t+1) = S(t) - r*B1*I(t)*S(t)/N - r*B2*E(t)*S(t)/N;
     E(t+1) = E(t) + r*B1*I(t)*S(t)/N + r*B2*E(t)*S(t)/N - a*E(t);
     I(t+1) = I(t) + a*E(t) - y*I(t);
