@@ -1,13 +1,13 @@
 # cuhksz_ce_camp_covid_19
 
 ## Goals
-- To analyze the COVID-19 data in China and get a mathematical epdimic model for the virus.
+- To analyze the COVID-19 data in Hubei, China and get a mathematical epidemic model for the virus.
 - To explore that how different policies can affect the model.
-- To use the model created above to predict the breakpoint for people.
+- To use the model created above to predict the breakpoint.
 - To conclude some good advice for the policy maker to flatten the curve.
 
 ## Tool
-Matlab
+- Matlab
 
 ## Methods
 - Using the basic SEIR model and modifying it with actual factors (policies, medical ability...).
@@ -17,18 +17,4 @@ Matlab
 - Maybe using Matlab to use the knowledge machine learning to get some good enough parameters.
   
 ## Thoughts
-$$
-    S(t+1) = S(t) - \frac{\beta_{1}S(t)I(t)r(t)}{N(t)} - \frac{\beta_{2}S(t)E(t)r(t)}{N(t)}
-$$
-
-$$
-    E(t+1) = E(t) + \frac{\beta_{1}S(t)I(t)r(t)}{N(t)} + \frac{\beta_{2}S(t)E(t)r(t)}{N(t)} - \sigma E(t)
-$$
-
-$$
-    I(t+1) = I(t) + \sigma E(t) - \gamma I(t)
-$$
-
-$$
-    R(t+1) = R(t) + \gamma I(t)
-$$
+- Based on the paper published by Zhong Nanshan's team, creating a model.
